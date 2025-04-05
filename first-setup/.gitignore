@@ -1,0 +1,5 @@
+pkg
+src
+first-setup
+!PKGBUILD
+*.zst

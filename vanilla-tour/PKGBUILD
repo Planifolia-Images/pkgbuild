@@ -1,0 +1,21 @@
+pkgname=vanilla-tour
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="A quick slideview Tour of all new things in Vanilla OS."
+arch=('any')
+url="https://github.com/Vanilla-OS/vanilla-tour"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4' 'librsvg')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils' 'libjpeg-turbo' 'blueprint-compiler')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('ca7b3048e3d03a5ef236af9d6171f8a3f0cee741f73567e8e84daede0bb24fd4')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

@@ -1,0 +1,21 @@
+pkgname=plymouth-theme-vanilla
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Plymouth theme for Vanilla-OS."
+arch=('any')
+url="https://github.com/Vanilla-OS/plymouth-theme-vanilla"
+depends=('plymouth')
+makedepends=('meson')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('840be94aece62cab069ab3afedfc86699b34b19c875314ed9944a0db858d83e6')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

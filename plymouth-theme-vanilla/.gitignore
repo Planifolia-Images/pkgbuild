@@ -1,0 +1,5 @@
+pkg
+src
+plymouth-theme-vanilla
+!PKGBUILD
+*.zst

@@ -1,0 +1,5 @@
+pkg
+src
+vanilla-backgrounds
+!PKGBUILD
+*.zst

@@ -1,0 +1,22 @@
+pkgname=vanilla-sideload-utility
+_pkgname=sideload-utility
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="A frontend in GTK 4 and Libadwaita to sideload apps in VSO."
+arch=('any')
+url="https://github.com/Vanilla-OS/sideload-utility"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4' 'vte4')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils' 'make' 'libjpeg-turbo')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('216c54d2193c06d6241abfe28c51139fd5dece9c46f2fe358f7d8fce5fcc84e3')
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${_pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

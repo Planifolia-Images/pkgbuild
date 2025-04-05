@@ -1,0 +1,22 @@
+pkgname=adwdialog-git
+_pkgname=AdwDialog
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Display GTK4/libadwaita dialogs from terminal and scripts."
+arch=('any')
+url="https://github.com/Vanilla-OS/AdwDialog"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils' 'make' 'libjpeg-turbo')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${_pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

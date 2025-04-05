@@ -1,0 +1,21 @@
+pkgname=abroot-rollback-notifier
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="Notify users of available ABRoot rollback via a GTK4/libadwaita dialog."
+arch=('any')
+url="https://github.com/Vanilla-OS/abroot-rollback-notifier"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

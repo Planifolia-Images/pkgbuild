@@ -1,0 +1,21 @@
+pkgname=vanilla-updates-utility
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="A frontend in GTK 4 and Libadwaita to manage system updates in Vanilla OS."
+arch=('any')
+url="https://github.com/Vanilla-OS/vanilla-updates-utility"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('7e8ba0373a089c6656ea1d462ab06e207e33d19beab983742f8738b53564881a')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

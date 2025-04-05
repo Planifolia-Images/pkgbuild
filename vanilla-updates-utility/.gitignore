@@ -1,0 +1,5 @@
+pkg
+src
+vanilla-updates-utility
+!PKGBUILD
+*.zst

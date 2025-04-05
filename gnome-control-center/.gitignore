@@ -1,0 +1,6 @@
+pkg
+src
+libgxdp
+libgnome-volume-control
+gnome-control-center
+!PKGBUILD

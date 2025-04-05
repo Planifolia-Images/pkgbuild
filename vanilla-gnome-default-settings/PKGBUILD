@@ -1,0 +1,15 @@
+pkgname=vanilla-gnome-default-settings
+pkgver=0.1
+pkgrel=1
+pkgdesc="Vanilla OS GNOME default settings."
+arch=('any')
+url="https://github.com/Vanilla-OS/vanilla-gnome-default-settings"
+makedepends=('glib2')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('09e302059ab673c6b045c8a6291477ad7826d653620125508d6da63a875e032d')
+
+package() {
+  cd ${pkgname}
+  install -d "${pkgdir}/usr/share/glib-2.0/schemas"
+  install debian/vanilla-gnome-default-settings.gsettings-override "${pkgdir}/usr/share/glib-2.0/schemas/20_vanilla-gnome-default-settings.gschema.override"
+}

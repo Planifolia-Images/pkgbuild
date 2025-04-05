@@ -1,0 +1,20 @@
+pkgname=vanilla-backgrounds
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="Collection of light and dark backgrounds for Vanilla-OS."
+arch=('any')
+url="https://github.com/Vanilla-OS/vanilla-backgrounds"
+makedepends=('meson' 'glib2-devel')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('c87b8e009c4a4355ae9d81b8e3b517bf21662a8ef36f8fa2adb8f61c655d2a26')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

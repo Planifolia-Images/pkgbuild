@@ -1,0 +1,21 @@
+pkgname=vanilla-prime-utility
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="A frontend in GTK 4 and Libadwaita to switch PRIME profiles."
+arch=('any')
+url="https://github.com/Vanilla-OS/vanilla-prime-utility"
+depends=('python' 'python-gobject' 'libadwaita' 'gtk4' 'vte4')
+makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gettext' 'desktop-file-utils' 'make' 'libjpeg-turbo')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('f630f29b84e234e235d9abb900110f7ed47cb76a76ccd091aab1978cd6284d2c')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

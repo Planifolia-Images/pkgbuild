@@ -1,0 +1,5 @@
+pkg
+src
+vanilla-gnome-default-settings
+!PKGBUILD
+*.zst

@@ -1,0 +1,21 @@
+pkgname=desktop-base
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Common files for the Vanilla OS GNOME."
+arch=('any')
+url="https://github.com/Vanilla-OS/desktop-base"
+depends=('librsvg')
+makedepends=('optipng' 'librsvg')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('3923dcc8df20f15187a17518b30569cc061eb7e2cab134dac755caa26bc04eb0')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  make clean
+  make
+}
+
+package() {
+  cd ${pkgname}
+  make DESTDIR="$pkgdir" install
+}
