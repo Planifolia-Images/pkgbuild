@@ -1,6 +1,6 @@
 pkgname=vanilla-tour
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A quick slideview Tour of all new things in Vanilla OS."
 arch=('any')
 url="https://github.com/Vanilla-OS/vanilla-tour"
@@ -18,4 +18,5 @@ build() {
 package() {
   cd ${pkgname}
   DESTDIR="$pkgdir" ninja -C build install
+  chmod +x "$pkgdir/usr/bin/vanilla-tour"
 }
