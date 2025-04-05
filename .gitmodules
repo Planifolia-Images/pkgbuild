@@ -1,6 +1,0 @@
-[submodule "libpqmarble"]
-	path = libpqmarble
-	url = https://aur.archlinux.org/libpqmarble.git
-[submodule "blackbox-terminal"]
-	path = blackbox-terminal
-	url = https://aur.archlinux.org/blackbox-terminal.git

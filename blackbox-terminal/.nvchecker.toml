@@ -1,0 +1,5 @@
+[blackbox-terminal]
+source = "git"
+git = "https://gitlab.gnome.org/raggesilver/blackbox.git"
+prefix = "v"
+exclude_regex = "v42.*"
