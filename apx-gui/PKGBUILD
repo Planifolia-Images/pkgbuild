@@ -1,0 +1,21 @@
+pkgname=apx-gui
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="A frontend in GTK 4 and Libadwaita for Apx."
+arch=('any')
+url="https://github.com/Vanilla-OS/apx-gui"
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'vte4' 'python-yaml' 'python-requests' 'gettext')
+makedepends=('base-devel' 'meson' 'libadwaita' 'desktop-file-utils' 'pkgconf' 'glib2-devel')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('363bcb2546b2fb864983dbabb2ed015246a6bc35f23f634dd878eea5ebc6105a')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build
+  ninja -C build
+}
+
+package() {
+  cd ${pkgname}
+  DESTDIR="$pkgdir" ninja -C build install
+}

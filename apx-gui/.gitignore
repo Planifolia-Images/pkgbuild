@@ -1,0 +1,5 @@
+pkg
+src
+apx-gui
+!PKGBUILD
+*.zst
