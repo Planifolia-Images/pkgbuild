@@ -7,7 +7,7 @@ pkgname=(
   gnome-control-center
   gnome-keybindings
 )
-pkgver=48.0
+pkgver=48.3
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
 url="https://apps.gnome.org/Settings/"
@@ -86,16 +86,15 @@ source=(
   # GNOME Control Center tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=e68375c7aced97705953b8e3b30af9f17991153b"
-  #"vanilla-prime-utility.patch"
-  #"vanilla-updates-utility.patch"
+  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=e6c11f2812cad0a43e847ec97bfc1c67bf50be52"
+  "vanilla-prime-utility.patch"
+  "vanilla-updates-utility.patch"
 )
-b2sums=('47752f5a016cb60db862f704bd6e328f794927fcd78899bcb1a4aea0c4927826949246786eeca9e9367b8a5cc7531fe676a0550c05955233f278a35eafbd591e'
+b2sums=('b9eff6c6bf50f3cfc1bfcfb7a7b0d237ed952c1e754ecb2d402f3fe0e9f48a75ffbfb18b752189de24b40ac9476220c70758708f061db16186ac12e6004b40a8'
         'SKIP'
-        '09bd02a627afffa49c11e4baec961878060d7710e852628c0e0d009d5bdc37eaa3cd1d5bbeea316f197197b9d88436ecf157ebaef41e01b66ad102e1f1c69fb2'
-        #'45c67eb7fd260525c8af6983744763fae33c0872f5034016cd5b39adaf5ca489b825f2c637bcae1da87ab027c21f6c720cc67003cfea34f30533498a91ecadfd'
-        #'d82041ca32d00256bbf4bb8e95b3868f260cc99c827055fc312fa99e11959bab370e3e2617e593ac7062321fa1829bc7c8013f0f6f016a717071fbd820e7eb3b'
-)
+        '778c8c83d6a9568d1df3fc237ae2b5d1fbac1c62b51d9d228725f43321a85dc97e8dd1ca88458520001facef0ad0a99c0b2fb86817dbf62d1f9ddd31d6e753d9'
+        '45c67eb7fd260525c8af6983744763fae33c0872f5034016cd5b39adaf5ca489b825f2c637bcae1da87ab027c21f6c720cc67003cfea34f30533498a91ecadfd'
+        'd82041ca32d00256bbf4bb8e95b3868f260cc99c827055fc312fa99e11959bab370e3e2617e593ac7062321fa1829bc7c8013f0f6f016a717071fbd820e7eb3b')
 validpgpkeys=(
   9B60FE7947F0A3C58136817F2C2A218742E016BE # Felipe Borges (GNOME) <felipeborges@gnome.org>
 )
@@ -107,8 +106,8 @@ prepare() {
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git -c protocol.file.allow=always -c protocol.allow=never submodule update
 
-  #patch -p1 < "$srcdir/vanilla-prime-utility.patch"
-  #patch -p1 < "$srcdir/vanilla-updates-utility.patch"
+  patch -p1 < "$srcdir/vanilla-prime-utility.patch"
+  patch -p1 < "$srcdir/vanilla-updates-utility.patch"
 }
 
 

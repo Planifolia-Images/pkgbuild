@@ -1,0 +1,5 @@
+pkg
+src
+abroot-rollback-notifier
+!PKGBUILD
+*.zst

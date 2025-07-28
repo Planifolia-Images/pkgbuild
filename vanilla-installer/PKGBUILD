@@ -1,7 +1,8 @@
-pkgname=vanilla-installer-git
+pkgname=vanilla-installer
 _pkgname=vanilla-installer
-pkgver=2.4.0
-pkgrel=2
+_commit=fa2fee512ce7d36c5a429ed89ef5e7aaf3852c3f
+pkgver=2.4.0.git
+pkgrel=1
 pkgdesc="A frontend in GTK 4 and Libadwaita for Albius."
 arch=('any')
 url="https://github.com/Vanilla-OS/vanilla-installer"
@@ -9,14 +10,14 @@ _url="https://github.com/Planifolia-Images/vanilla-installer"
 
 depends=('python' 'python-requests' 'python-gobject' 'python-pytz' 'libadwaita'
         'gnome-desktop-4' 'libgweather-4' 'vte4' 'xkeyboard-config' 'gparted'
-        'openssl' 'albius-git' 'libnma' 'libnma-common' 'libnma-gtk4')
+        'openssl' 'albius' 'libnma' 'libnma-common' 'libnma-gtk4')
 
 makedepends=('base-devel' 'python' 'meson' 'libadwaita' 'gnome-desktop-4'
             'libgweather-4' 'gettext' 'desktop-file-utils' 'make' 'libjpeg-turbo'
             'libnma' 'libnma-common' 'libnma-gtk4')
 
-source=("git+${_url}.git")
-sha256sums=('SKIP')
+source=("git+${url}#commit=${_commit}")
+sha256sums=('7a8b11ada9348e009ad22bafade0bbb01e1dfffa913f3c6819605508d228f660')
 
 build() {
   cd "${srcdir}/${_pkgname}"

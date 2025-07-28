@@ -1,14 +1,15 @@
-pkgname=albius-git
+pkgname=albius
 _pkgname=Albius
-pkgver=1.0.0
+_commit=7409af7329c51416703c512f5e049368dfb3e710
+pkgver=1.0.0.git
 pkgrel=1
 pkgdesc="Linux installer backend with support for SquashFS and OCI installations."
 arch=('any')
 url="https://github.com/Vanilla-OS/Albius"
 depends=('go' 'lvm2' 'parted')
 makedepends=('btrfs-progs' 'device-mapper' 'gpgme' 'go' 'pkg-config')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}#commit=${_commit}")
+sha256sums=('1dd557ef2a143c6bf5f78a35b2e3e016a7c7d2b120c72d4e77046523b8ecf878')
 
 package() {
   cd "${srcdir}/${_pkgname}"

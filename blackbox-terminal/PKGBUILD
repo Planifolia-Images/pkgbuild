@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <dkiziridis at outlook dot com>
 pkgname=blackbox-terminal
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful GTK 4 terminal"
 arch=('x86_64')
 url="https://gitlab.gnome.org/raggesilver/blackbox"

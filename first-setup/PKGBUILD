@@ -1,5 +1,5 @@
 pkgname=first-setup
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="This utility is meant to be used in Vanilla GNOME as a first-setup wizard."
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/Vanilla-OS/first-setup"
 depends=('python' 'python-gobject' 'python-pytz' 'python-requests' 'libadwaita' 'glib2' 'gtk4' 'libgweather-4' 'gnome-desktop-4' 'polkit')
 makedepends=('base-devel' 'python' 'meson' 'gettext' 'desktop-file-utils' 'make' 'ninja' 'pkgconf' 'glib2' 'libxml2' 'gtk-update-icon-cache')
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('3c26e64c6f56bfce35f2e41dafe4f66e5bfa94c430ee99d20fc0ea8e2acd73ca')
+sha256sums=('087f2d8e079ee2bd2b0e1070af66b5f2310ec14adeac2cf664b92f3180d69729')
 
 build() {
   cd "${srcdir}/${pkgname}"

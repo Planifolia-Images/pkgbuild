@@ -1,5 +1,5 @@
 pkgname=plymouth-theme-vanilla
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Plymouth theme for Vanilla-OS."
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/Vanilla-OS/plymouth-theme-vanilla"
 depends=('plymouth')
 makedepends=('meson')
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('840be94aece62cab069ab3afedfc86699b34b19c875314ed9944a0db858d83e6')
+sha256sums=('b5037e3b94753c7ca116fdf5ad5d9c651ccb05a9a18cc13e925d5797bafe0a97')
 
 build() {
   cd "${srcdir}/${pkgname}"
